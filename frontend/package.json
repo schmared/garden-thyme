@@ -6,9 +6,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --useLocalIp --host 0.0.0.0 --open --config webpack.dev.js",
-    "start": "node server.js",
-    "heroku-postbuild": "NODE_ENV=production webpack -p",
+    "dev": "start http://localhost:8081/ & webpack-dev-server --useLocalIp --host 0.0.0.0 --config webpack.dev.js",
+    "build": "webpack -p",
     "test": "mocha -r @babel/register -r testSetup.js src/**/*.spec.jsx",
     "test:watch": "npm run test -- --reporter=nyan --watch --watch-files src/**/*"
   },
@@ -22,6 +21,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-google-login": "^5.1.3",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "redux-localstorage-simple": "^2.1.6"

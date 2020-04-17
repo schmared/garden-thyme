@@ -32,10 +32,6 @@ const useStyles = makeStyles((theme) => ({
 const CardList = () => {
   const classes = useStyles();
 
-  console.log(tileData);
-
-  tileData.map((t) => { console.log(t); return t; });
-
   return (
     <div className={classes.root}>
       <GridList className={classes.gridList} cols={2.5}>
