@@ -23,8 +23,7 @@ namespace GardenThymeApi
             _ = services.AddControllers();
             _ = services.AddAuthentication(GoogleDefaults.AuthenticationScheme).AddGoogle(options =>
             {
-                IConfigurationSection googleAuthNSection =
-                    Configuration.GetSection("Authentication:Google");
+                var googleAuthNSection = Configuration.GetSection("Authentication:Google");
 
                 options.ClientId = googleAuthNSection["ClientId"];
                 options.ClientSecret = googleAuthNSection["ClientSecret"];
@@ -33,10 +32,9 @@ namespace GardenThymeApi
             _ = services.AddHttpClient("trefle_auth", client =>
             {
                 client.DefaultRequestHeaders.Accept.Clear();
-                client.BaseAddress = new Uri($"https://trefle.io/api/auth/claim?token={trefle:token}&origin=localhost");
+                client.BaseAddress = new Uri($"https://trefle.io/api/auth/claim?token={Configuration.GetSection("trefle:token").Value}&origin=localhost");
                 client.Timeout = TimeSpan.FromMilliseconds(50 * 1000);
             });
-
             _ = services.AddHttpClient("trefle", client =>
             {
                 client.DefaultRequestHeaders.Accept.Clear();
@@ -55,10 +53,11 @@ namespace GardenThymeApi
             _ = app.UseRouting();
             _ = app.UseAuthorization();
             _ = app.UseAuthentication();
-
+            _ = app.UseStaticFiles();
             _ = app.UseEndpoints(endpoints =>
             {
-                _ = endpoints.MapControllers();
+                _ = endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+                _ = endpoints.MapFallbackToController("Index", "Home");
             });
         }
     }
