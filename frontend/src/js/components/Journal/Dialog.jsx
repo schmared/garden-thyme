@@ -11,28 +11,34 @@ import DialogTransition from './DialogTransition';
 const JournalDialog = ({
   open,
   cancel,
-}) => (
-  <Dialog
-    open={open}
-    TransitionComponent={DialogTransition}
-    keepMounted
-    fullScreen
-    onClose={() => cancel()}
-    aria-labelledby="journal-dialog-title"
-    aria-describedby="journal-dialog-description"
-  >
-    <DialogTitle id="journal-dialog-title">What Did You Do Today?</DialogTitle>
-    <DialogContent>
-      <DialogContentText id="journal-dialog-description">
-        Planted | Harvested | Started Seeds | Something Else
-      </DialogContentText>
-    </DialogContent>
-    <DialogActions>
-      <Button onClick={() => cancel()} color="secondary">Cancel</Button>
-      <Button onClick={() => { console.log('wat'); }} color="primary">Add</Button>
-    </DialogActions>
-  </Dialog>
-);
+}) => {
+  const addJournalEntry = () => {
+    console.log('do something?'); // eslint-disable-line no-console
+  };
+
+  return (
+    <Dialog
+      open={open}
+      TransitionComponent={DialogTransition}
+      keepMounted
+      fullScreen
+      onClose={() => cancel()}
+      aria-labelledby="journal-dialog-title"
+      aria-describedby="journal-dialog-description"
+    >
+      <DialogTitle id="journal-dialog-title">What Did You Do Today?</DialogTitle>
+      <DialogContent>
+        <DialogContentText id="journal-dialog-description">
+          Planted | Harvested | Started Seeds | Something Else
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={() => cancel()} color="secondary">Cancel</Button>
+        <Button onClick={addJournalEntry} color="primary">Add</Button>
+      </DialogActions>
+    </Dialog>
+  );
+};
 
 JournalDialog.propTypes = {
   open: PropTypes.bool.isRequired,
