@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authorization;
+using System;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GardenThymeApi.Controllers
@@ -6,10 +6,14 @@ namespace GardenThymeApi.Controllers
     [ApiController]
     public class HomeController : Controller
     {
-        [Route("")]
-        [Route("status")]
         [HttpGet]
         //[Authorize]
+        public IActionResult Index()
+        {
+            return File(Environment.CurrentDirectory + "index.html", "text/html");
+        }
+
+        [Route("status")]
         public IActionResult Status()
         {
             return Ok();

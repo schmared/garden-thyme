@@ -60,7 +60,7 @@ namespace GardenThymeApi.Controllers
         {
             var client = _httpClientFactory.CreateClient("trefle_auth");
 
-            
+            return null;
         }
     }
 }
