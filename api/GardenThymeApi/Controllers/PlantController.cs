@@ -5,10 +5,12 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using GardenThymeApi.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GardenThymeApi.Controllers
 {
     [ApiController]
+    [Authorize]
     public class PlantController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
