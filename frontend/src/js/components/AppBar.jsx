@@ -4,7 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import EmojiNature from '@material-ui/icons/EmojiNature';
 import { makeStyles } from '@material-ui/core/styles';
-import Settings from './Settings';
+import Settings from './User';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {

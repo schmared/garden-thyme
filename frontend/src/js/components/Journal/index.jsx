@@ -18,11 +18,7 @@ const Journal = ({ className }) => {
 };
 
 Journal.propTypes = {
-  className: PropTypes.string,
-};
-
-Journal.defaultProps = {
-  className: '',
+  className: PropTypes.string.isRequired,
 };
 
 export default Journal;

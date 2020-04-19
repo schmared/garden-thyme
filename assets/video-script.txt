@@ -1,3 +1,39 @@
+Food security and safety has been an issue for a long time.
+Many people have realized the benefits of eating locally already, but there has been even more looking for a solution
+to the long supply chain involved in the food we eat every day, especially since the current pandemic.
+Some people that were on the fence about growing their own food to be more self-sustaining have taken the leap:
+- help avoid the grocery store (long supply chain, lots of unknown people touching your food)
+- eating more fruits and vegetables helps your immune system 
+- an excuse to go outside and something to do while we #stayathome
+
+We want to make it easier for people to grow as much food as possible with what they have.
+
+The first step is knowing what to grow.
+
+For a long time gardeners and farmers have relied on the Agricultural Zone designations to know what will grow in their area.
+
+But things that grow well in Grand Island might not do as well in Cheektowaga. There are different soil types and compositions,
+and the overall weather is slightly different throughout the city and suburbs. 
+
+Garden Thyme makes it easy for beginner gardeners and experienced farmers to keep track of what they've grown,
+what has done well, and builds on that across neighborhoods. 
+
+When you log how many tomatoes you got on July 3rd from the [Variety] tomato plant that you put in the ground on May 30, it gives everyone else
+an idea of how well the [Variety] tomato plant will grow, how many tomatoes to expect from it, and how long it will take to fruit.
+When Garden Thyme gives you suggestions on what to grow, it uses that information to tell you which tomatoes are going to work better for you.
+Growing results from people closest to you (including you!) are weighted the heaviest. 
+
+Garden Thyme isn't limited to just Buffalo. There are no restrictions on location and the basic data will work everywhere.
+The more people that use it in an area, the more helpful it becomes. Even if no one has used it in your area, you will get the
+basic recommendations as if you were looking at the zone designation on a seed packet. If you are the only one that uses it in your city
+you will still get recommendations based on what you grew last year. But the more people that log what they're growing, the more
+intelligent our algorithm becomes and the more we can help you grow as many veggies as possible!
+
+We plan to add more ways to log the activities in your garden, including pictures, garden type (pots, raised beds, etc), 
+We also want to add reporting to encourage established farms to log their results as that data will be the most helpful!
+
+
+
 Things to address:
 
 PROMPT (30%)
