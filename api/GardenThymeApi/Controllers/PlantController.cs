@@ -1,9 +1,10 @@
 using System;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
+using GardenThymeApi.Models;
 
 namespace GardenThymeApi.Controllers
 {
@@ -21,7 +22,10 @@ namespace GardenThymeApi.Controllers
         [Route("/plant")]
         public async Task<IActionResult> GetPlant([FromQuery]int? id, [FromQuery]string name)
         {
-            var response = await _httpClientFactory.CreateClient("trefle").GetAsync(PlantUri(id, name));
+            var client = _httpClientFactory.CreateClient("trefle");
+            client.DefaultRequestHeaders.Add("Authorization", await TrefleAccess());
+
+            var response = await client.GetAsync(PlantUri(id, name));
 
             return response.IsSuccessStatusCode
                 ? Ok(await response.Content.ReadAsStringAsync())
@@ -39,14 +43,14 @@ namespace GardenThymeApi.Controllers
             if (!string.IsNullOrEmpty(name))
                 nameString = $"?p={name}";
 
-            return $"https://trefle.io/api/{idString}{nameString}";
+            return $"{idString}{nameString}";
         }
 
         private async Task<string> TrefleAccess()
         {
-            var token = HttpContext.Session.Keys.FirstOrDefault(a => a == "access_token");
+            var token = GardenOptions.TrefleAuth;
 
-            if (token != null)
+            if (!string.IsNullOrEmpty(token))
             {
                 if (new JwtSecurityTokenHandler().ReadToken(token).ValidTo < DateTime.UtcNow.AddMinutes(1))
                     token = await GetAccessToken();
@@ -59,9 +63,11 @@ namespace GardenThymeApi.Controllers
 
         private async Task<string> GetAccessToken()
         {
-            var client = _httpClientFactory.CreateClient("trefle_auth");
+            var response = await _httpClientFactory.CreateClient("trefle_auth").PostAsync("", null);
+            var content = await response.Content.ReadAsStringAsync();
+            var trefle = JsonSerializer.Deserialize<TrefleResponse>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-            return null;
+            return trefle.Token;
         }
     }
 }

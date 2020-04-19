@@ -1,12 +1,12 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Http.Headers;
-using GardenThymeApi.Models;
-using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 
 namespace GardenThymeApi
 {
@@ -22,7 +22,6 @@ namespace GardenThymeApi
         public void ConfigureServices(IServiceCollection services)
         {
             _ = services.AddControllers();
-
             _ = services.AddAuthentication()
                 .AddGoogle(options =>
                 {
@@ -42,7 +41,7 @@ namespace GardenThymeApi
             {
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.BaseAddress = new Uri("");
+                client.BaseAddress = new Uri("https://trefle.io/api/plants/");
                 client.Timeout = TimeSpan.FromMilliseconds(50 * 1000);
             });
         }
