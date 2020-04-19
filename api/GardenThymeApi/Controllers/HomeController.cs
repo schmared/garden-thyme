@@ -1,4 +1,5 @@
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GardenThymeApi.Controllers
@@ -6,7 +7,7 @@ namespace GardenThymeApi.Controllers
     public class HomeController : Controller
     {
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         public IActionResult Index()
         {
             var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/index.html");
