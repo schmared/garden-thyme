@@ -20,9 +20,9 @@ namespace GardenThymeApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery] long UserId)
         {
-            return Ok((await _queryService.Get<UserSettings>(TableNames.Settings, new { _userContext.UserId })).FirstOrDefault());
+            return Ok((await _queryService.Get<UserSettings>(TableNames.Settings, new { UserId })).FirstOrDefault());
         }
 
         [HttpPost]
