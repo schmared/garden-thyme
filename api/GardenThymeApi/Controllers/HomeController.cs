@@ -1,8 +1,5 @@
-using System;
 using System.IO;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.FileProviders;
 
 namespace GardenThymeApi.Controllers
 {
@@ -12,7 +9,7 @@ namespace GardenThymeApi.Controllers
         //[Authorize]
         public IActionResult Index()
         {
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "index.html");
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/index.html");
             return PhysicalFile(path, "text/html");
         }
 
