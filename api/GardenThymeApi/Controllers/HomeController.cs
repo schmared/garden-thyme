@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GardenThymeApi.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         [HttpGet]
-        [Authorize]
         public IActionResult Index()
         {
             var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/index.html");
