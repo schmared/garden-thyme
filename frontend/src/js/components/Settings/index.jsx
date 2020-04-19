@@ -25,11 +25,13 @@ const Settings = ({ setUserLoggedIn, isLoggedIn, user }) => {
     );
   }
 
+  // TODO move clientId to config somewhere
   return (
     <div id="user-settings">
       <GoogleLogin
         clientId="190581999051-9d8pjkd18pcgd1o56i96s15u03el7ne7.apps.googleusercontent.com"
         onSuccess={googleResponse}
+        onFailure={(x) => console.warn(x)}
         isSignedIn
         cookiePolicy="single_host_origin"
         render={(renderProps) => (
