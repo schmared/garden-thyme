@@ -1,53 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogActions from '@material-ui/core/DialogActions';
-import Button from '@material-ui/core/Button';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import Toolbar from '@material-ui/core/Toolbar';
+import { makeStyles } from '@material-ui/core/styles';
+import Profile from './Profile';
+
+const drawerWidth = 340;
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  drawerContainer: {
+    overflow: 'auto',
+  },
+}));
 
 const SettingsDialog = ({
   open,
   close,
 }) => {
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const classes = useStyles();
 
   return (
-    <div>
-      <Dialog
-        id="settings-dialog"
-        open={open}
-        keepMounted
-        fullScreen={fullScreen}
-        onClose={close}
-        aria-labelledby="settings-dialog-title"
-        aria-describedby="settings-dialog-description"
-      >
-        <DialogTitle id="settings-dialog-title">
-          Settings
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="user-settings-dialog-description">
-            We need your location to determine the best plants for you!
-          </DialogContentText>
-          <div>Some kind of form goes here!</div>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            alt="Close settings dialog"
-            onClick={close}
-            color="primary"
-            className="close-button"
-          >
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+    <SwipeableDrawer
+      anchor="right"
+      className={classes.drawer}
+      classes={{ paper: classes.drawerPaper }}
+      open={open}
+      onOpen={() => {}}
+      onClose={close}
+      disableBackdropTransition
+      disableDiscovery
+    >
+      <Toolbar />
+      <div className={classes.drawerContainer}>
+        <Profile />
+      </div>
+    </SwipeableDrawer>
   );
 };
 

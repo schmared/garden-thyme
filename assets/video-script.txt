@@ -1,0 +1,23 @@
+Things to address:
+
+PROMPT (30%)
+“Supporting the Buffalo Community” How closely does it answer the prompt?
+
+TECHNICAL DIFFICULTY (30%)
+Is the project technically impressive? Complex? Does it seem remarkable that someone could
+achieve this hack in just a day or two?
+
+POLISH (15%)
+You can’t expect a completely polished, ready-to-go project at the end of a hackathon. But you
+can look for some degree of polish, thought, and effort. Does the hack work? Did the team
+achieve their goals and accomplish what they set out to do?
+
+“WOW” FACTOR (15%)
+Sure, this one is hard to judge, but hackathons are all about exciting innovation and surprising
+solutions to problems. Look for a project that makes you say, “Wow!” You can also take into
+account the reactions of the other hackers. Which projects seem to really amaze and excite the
+audience?
+
+FUTURE PLANS (10%)
+Depending on the purpose or goal of the hackathon you’re judging, you may also consider the
+team’s future plans for their hack. Does the hack seem practical and viable?

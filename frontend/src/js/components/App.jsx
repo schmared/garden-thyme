@@ -1,11 +1,14 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider, makeStyles } from '@material-ui/styles';
 import { hot } from 'react-hot-loader/root';
 import theme from '../theme';
+import GlobalErrorBoundary from './GlobalErrorBoundary';
 import AppBar from './AppBar';
 import Journal from './Journal';
 import Dashboard from './Dashboard';
+import configureStore from '../configure-store';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -33,17 +36,21 @@ const App = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <AppBar />
-        <Dashboard className={classes.mainContent} />
-        <div className={classes.footer}>
-          &copy; 2020 Team Awesome
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <GlobalErrorBoundary classes={classes}>
+        <div className={classes.root}>
+          <Provider store={configureStore()}>
+            <AppBar />
+            <Dashboard className={classes.mainContent} />
+            <div className={classes.footer}>
+              &copy; 2020 Team Awesome
+            </div>
+            <Journal className={classes.fab} />
+          </Provider>
         </div>
-        <Journal className={classes.fab} />
-      </ThemeProvider>
-    </div>
+      </GlobalErrorBoundary>
+    </ThemeProvider>
   );
 };
 
