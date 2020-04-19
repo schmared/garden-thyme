@@ -13,6 +13,14 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader', 'eslint-loader?fix=true'],
       },
+      {
+        test: /\.(jpg|png)$/,
+        use: ['url-loader'],
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader']
+      }
     ],
   },
   plugins: [

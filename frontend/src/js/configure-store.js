@@ -1,7 +1,7 @@
 import {
   createStore, combineReducers, compose,
 } from 'redux';
-import settings from './components/Settings/reducer';
+import settings from './components/User/reducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

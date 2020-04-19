@@ -51,10 +51,16 @@ class GeneralErrorBoundary extends React.Component {
   }
 }
 
-/* eslint-disable react/forbid-prop-types */
 GeneralErrorBoundary.propTypes = {
-  children: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]).isRequired,
+  classes: PropTypes.shape({
+    root: PropTypes.string,
+    mainContent: PropTypes.string,
+    footer: PropTypes.string,
+  }).isRequired,
 };
 
 export default GeneralErrorBoundary;

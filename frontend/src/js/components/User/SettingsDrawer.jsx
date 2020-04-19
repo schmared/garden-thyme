@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SettingsDialog = ({
+const SettingsDrawer = ({
   open,
   close,
 }) => {
@@ -51,9 +51,9 @@ const SettingsDialog = ({
   );
 };
 
-SettingsDialog.propTypes = {
+SettingsDrawer.propTypes = {
   open: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
 };
 
-export default SettingsDialog;
+export default SettingsDrawer;

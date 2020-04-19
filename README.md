@@ -36,6 +36,7 @@ Some immediate features we'd like to add include:
 - Multiple gardens (including different locations) per user and multiple users per garden
 - Different OAuth methods in addition to the Google login
 - Logging and viewing comments and ratings per journal entry and plant
+- Options for tracking (and suggestions based on) soil type, greenhouses, etc.
 - ...
 
 We intend to keep this site free as much as possible. This includes keeping it open source so that others can contribute (just shoot us a pull request!). For now it is hosted for free but as soon as there is any amount of traffic we will probably put ads on the site somewhere to help us host it. Eventually there may be a "premium" version to remove ads, but we do not intend to lock down any features because we'd like for this to be available to all members of the community. Everyone should be able to grow their own food!
