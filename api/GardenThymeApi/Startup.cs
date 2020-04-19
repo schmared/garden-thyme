@@ -22,14 +22,15 @@ namespace GardenThymeApi
         public void ConfigureServices(IServiceCollection services)
         {
             _ = services.AddControllers();
-            //_ = services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddIdentity();
-            _ = services.AddAuthentication(GoogleDefaults.AuthenticationScheme).AddGoogle(options =>
-            {                
-                var googleAuthNSection = Configuration.GetSection("Authentication:Google");
 
-                options.ClientId = googleAuthNSection["ClientId"];
-                options.ClientSecret = googleAuthNSection["ClientSecret"];
-            });
+            _ = services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    var googleAuthNSection = Configuration.GetSection("Authentication:Google");
+
+                    options.ClientId = googleAuthNSection["ClientId"];
+                    options.ClientSecret = googleAuthNSection["ClientSecret"];
+                });
 
             _ = services.AddHttpClient("trefle_auth", client =>
             {

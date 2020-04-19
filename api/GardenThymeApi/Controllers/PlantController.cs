@@ -18,6 +18,7 @@ namespace GardenThymeApi.Controllers
         }
 
         [HttpGet]
+        [Route("/plant")]
         public async Task<IActionResult> GetPlant([FromQuery]int? id, [FromQuery]string name)
         {
             var response = await _httpClientFactory.CreateClient("trefle").GetAsync(PlantUri(id, name));
