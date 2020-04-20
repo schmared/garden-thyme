@@ -8,8 +8,10 @@ export default (state = defaultState, action) => {
   switch (action.type) {
     case 'SET_USER':
       return {
-        ...state, user: action.value.profileObj, isLoggedIn: true, loginLoading: false,
-        // , auth: action.value.accessToken
+        ...state,
+        user: action.value.profileObj,
+        isLoggedIn: true,
+        loginLoading: false,
       };
     case 'LOG_OUT':
       return {

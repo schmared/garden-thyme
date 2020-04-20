@@ -4,7 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import EmojiNature from '@material-ui/icons/EmojiNature';
 import { makeStyles } from '@material-ui/core/styles';
-import Settings from './User';
+import User from './User';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -28,7 +28,7 @@ export default () => {
         <Typography variant="h5" className={classes.title}>
           Garden Thyme
         </Typography>
-        <Settings />
+        <User />
       </Toolbar>
     </AppBar>
   );
