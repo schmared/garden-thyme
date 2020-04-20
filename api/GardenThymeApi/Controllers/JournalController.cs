@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using GardenThymeApi.Models;
@@ -7,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace GardenThymeApi.Controllers
 {
     [ApiController]
-    [Route("/journal")]
+    [Route("journal")]
     public class JournalController : Controller
     {
         private readonly IQueryService _queryService;
@@ -18,9 +19,9 @@ namespace GardenThymeApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery]int id)
+        public async Task<IActionResult> Get([FromQuery]int id, [FromQuery]string userId, [FromQuery]DateTime date)
         {
-            return Ok((await _queryService.Get<Journal>(TableNames.Journal, new { Id = id })).FirstOrDefault());
+            return Ok(await _queryService.Get<Journal>(TableNames.Journal, new { Id = id, UserId = userId, Date = date }));
         }
 
         [HttpPost]

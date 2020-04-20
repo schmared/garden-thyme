@@ -14,8 +14,8 @@ namespace GardenThymeApi.Controllers
             return PhysicalFile(path, "text/html");
         }
 
-        [Route("status")]
         [HttpGet]
+        [Route("status")]
         public IActionResult Status()
         {
             return Ok();
