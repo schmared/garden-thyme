@@ -19,6 +19,8 @@ namespace GardenThymeApi
 
         public IConfiguration Configuration { get; }
 
+        private readonly string _allowLocalFromLocal = "localhost_cors";
+
         public void ConfigureServices(IServiceCollection services)
         {
             _ = services.AddControllers();
@@ -47,12 +49,18 @@ namespace GardenThymeApi
 
             _ = services.AddSingleton<IDbContext, DbContext>();
             _ = services.AddSingleton<IQueryService, QueryService>();
+            _ = services.AddTransient<IUserContext>(u => new UserSettings { UserId = 0L, Longitude = 1m, Latitude = 1m });
+
+            _ = services.AddCors(options => options.AddPolicy(name: _allowLocalFromLocal, builder => builder.WithOrigins("http://localhost:8081")));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
+            {
                 _ = app.UseDeveloperExceptionPage();
+                _ = app.UseCors(_allowLocalFromLocal);
+            }
 
             _ = app.UseHttpsRedirection();
             _ = app.UseRouting();
