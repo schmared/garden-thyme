@@ -9,4 +9,9 @@ module.exports = merge(common, {
     publicPath: '/',
     filename: 'bundle.js',
   },
+  resolve: {
+    alias: {
+      config$: path.resolve(__dirname, 'config.prod.js'),
+    },
+  },
 });
