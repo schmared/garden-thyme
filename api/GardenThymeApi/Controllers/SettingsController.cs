@@ -11,12 +11,10 @@ namespace GardenThymeApi.Controllers
     public class SettingsController : Controller
     {
         private readonly IQueryService _queryService;
-        private readonly IUserContext _userContext;
 
-        public SettingsController(IQueryService queryService, IUserContext userContext)
+        public SettingsController(IQueryService queryService)
         {
             _queryService = queryService;
-            _userContext = userContext;
         }
 
         [HttpGet]

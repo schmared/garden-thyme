@@ -47,7 +47,6 @@ namespace GardenThymeApi
 
             _ = services.AddSingleton<IDbContext, DbContext>();
             _ = services.AddSingleton<IQueryService, QueryService>();
-            _ = services.AddTransient<IUserContext>(u => new UserSettings { UserId = 0L, Longitude = 1m, Latitude = 1m });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
