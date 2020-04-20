@@ -23,9 +23,9 @@ namespace GardenThymeApi.Models
         //     return GetParameterFromList<int, IntIdCollection>("@Table", ids);
         // }
 
-        public static SqlParameter UserId(long userId)
+        public static SqlParameter UserId(string userId)
         {
-            return new SqlParameter("@UserId", SqlDbType.BigInt) { Value = userId };
+            return new SqlParameter("@UserId", SqlDbType.VarChar, 100) { Value = userId };
         }
 
         // internal static SqlParameter GetParameterFromList<T, TCollection>(string parameterName, IList<T> list) where TCollection : List<T>, IEnumerable<T>, new()

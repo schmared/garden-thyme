@@ -5,7 +5,7 @@ namespace GardenThymeApi.Models
     public class Journal
     {
         public int Id { get; set; }
-        public long UserId { get; set; }
+        public string UserId { get; set; }
         public DateTime EntryDateTime { get; set; }
         public DateTime CreatedOn { get; set; }
         public int EntryType { get; set; }

@@ -49,7 +49,7 @@ namespace GardenThymeApi
 
             _ = services.AddSingleton<IDbContext, DbContext>();
             _ = services.AddSingleton<IQueryService, QueryService>();
-            _ = services.AddTransient<IUserContext>(u => new UserSettings { UserId = 0L, Longitude = 1m, Latitude = 1m });
+            _ = services.AddTransient<IUserContext>(u => new UserSettings { UserId = "0", Longitude = 1m, Latitude = 1m });
 
             _ = services.AddCors(options => options.AddPolicy(name: _allowLocalFromLocal, builder => builder.WithOrigins("http://localhost:8081")));
         }
