@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Profile from './Profile';
-import Settings from './Settings';
+import SettingsForm from './SettingsForm';
 
 
 const useStyles = makeStyles((theme) => {
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const SettingsDrawer = ({
+const UserDrawer = ({
   open,
   close,
 }) => {
@@ -53,15 +53,15 @@ const SettingsDrawer = ({
       <Toolbar />
       <div className={classes.drawerContainer}>
         <Profile />
-        <Settings />
+        <SettingsForm />
       </div>
     </SwipeableDrawer>
   );
 };
 
-SettingsDrawer.propTypes = {
+UserDrawer.propTypes = {
   open: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
 };
 
-export default SettingsDrawer;
+export default UserDrawer;
