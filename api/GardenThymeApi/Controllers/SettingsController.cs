@@ -26,7 +26,7 @@ namespace GardenThymeApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]UserSettings userSettings)
         {
-            return Ok((await _queryService.Upsert<UserSettings>(TableNames.Settings, new { userSettings.UserId, userSettings.Longitude, userSettings.Latitude })).FirstOrDefault());
+            return Ok((await _queryService.Upsert<UserSettings>(TableNames.Settings, new { userSettings.UserId, userSettings.Longitude, userSettings.Latitude, userSettings.ZipCode })).FirstOrDefault());
         }
     }
 }
