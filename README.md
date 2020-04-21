@@ -7,7 +7,7 @@ This is a garden webapp that will let you log when you've planted, harvested, et
 
 Based on data we've collected from you and your neighbors, we will suggest plants that work well not only in your Agricultural Zone, but things that have grown well in your neighborhood. Hopefully this will make it easier to be successful in growing your own food!
 
-Until we gather enough data, most of the suggestions will only be based on the Zone your garden is in. Once we have more information about what people are having success growing near you, that information will be factored into the suggestions.
+Until we gather enough data, most of the suggestions will only be based on the Zone your garden is in. As users around you input more information about their successes, that information will be factored into the suggestions.
 
 Even in a small city, there are many microclimates and different soil compositions that will affect what you can grow. That means that you will probably have more success growing things that your neighbors have had success with.
 

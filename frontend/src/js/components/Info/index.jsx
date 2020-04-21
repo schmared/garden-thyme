@@ -83,8 +83,8 @@ const Info = () => {
             </p>
             <p>
               Until we gather enough data, most of the suggestions will only be based on the Zone
-              your garden is in. Once we have more information about what people are having success
-              growing near you, that information will be factored into the suggestions.
+              your garden is in. As users around you input more information about their successes,
+              that information will be factored into the suggestions.
             </p>
             <p>
               Even in a small city, there are multiple microclimates and different soil compositions
