@@ -48,7 +48,7 @@ namespace GardenThymeApi
                 client.Timeout = TimeSpan.FromMilliseconds(50 * 1000);
             });
 
-            _ = services.AddSingleton<IQueryService, QueryService>();
+            _ = services.AddTransient<IQueryService, QueryService>();
             _ = services.AddTransient<IDbContext, DbContext>();
             _ = services.AddTransient<IUserContext>(u => new UserSettings { UserId = "0", Longitude = 1m, Latitude = 1m });
 
