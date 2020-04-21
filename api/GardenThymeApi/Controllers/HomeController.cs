@@ -31,8 +31,8 @@ namespace GardenThymeApi.Controllers
             });
         }
 
-        [Route("status")]
         [HttpGet]
+        [Route("status")]
         public IActionResult Status()
         {
             return Ok();

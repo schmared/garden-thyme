@@ -5,12 +5,11 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using GardenThymeApi.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace GardenThymeApi.Controllers
 {
     [ApiController]
-    [Authorize]
+    [Route("plant")]
     public class PlantController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -21,8 +20,7 @@ namespace GardenThymeApi.Controllers
         }
 
         [HttpGet]
-        [Route("/plant")]
-        public async Task<IActionResult> GetPlant([FromQuery]int? id, [FromQuery]string name)
+        public async Task<IActionResult> Get([FromQuery]int? id, [FromQuery]string name)
         {
             var client = _httpClientFactory.CreateClient("trefle");
             client.DefaultRequestHeaders.Add("Authorization", await TrefleAccess());

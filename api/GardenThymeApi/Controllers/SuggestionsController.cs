@@ -1,10 +1,15 @@
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GardenThymeApi.Controllers
 {
-    [Authorize]
-    public class SuggestionsController
+    [ApiController]
+    [Route("suggestions")]
+    public class SuggestionsController : Controller
     {
-
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok();
+        }
     }
 }
