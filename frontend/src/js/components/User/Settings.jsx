@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 import HelpIcon from '@material-ui/icons/Help';
-import LocationMap from './LocationMap';
+import UserLocation from './UserLocation';
 import LocationFormSave from './LocationFormSave';
 
 const useStyles = makeStyles({
@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 const Settings = ({ loggedInUser }) => {
   const classes = useStyles();
   const [userLocation, setUserLocation] = useState({ lat: 0, lng: 0 });
-  const [hasChanges, setHasChanges] = useState(false);
+  const [hasChanges, setHasChanges] = useState(true);
 
   return (
     <Card variant="outlined">
@@ -47,7 +47,7 @@ const Settings = ({ loggedInUser }) => {
             <HelpIcon style={{ marginLeft: 5 }} />
           </Tooltip>
         </Typography>
-        <LocationMap
+        <UserLocation
           loggedInUser={loggedInUser}
           updateLocation={(l) => {
             setUserLocation(l);

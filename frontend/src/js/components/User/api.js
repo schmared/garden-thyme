@@ -4,7 +4,7 @@ import config from 'config';
 
 const getSettings = async (_, googleId) => {
   const { data } = await axios.get(
-    `${config.apiBaseRoute}settings?id=${googleId}`,
+    `${config.apiBaseRoute}settings?userId=${googleId}`,
     // { headers: { "Authorization": userAuth }} // Not working in the api yet
   );
   return data;
