@@ -7,7 +7,7 @@ import SaveIcon from '@material-ui/icons/Save';
 import DoneIcon from '@material-ui/icons/Done';
 import ErrorIcon from '@material-ui/icons/Error';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import api from './api';
+import api from '../api';
 
 const useStyles = makeStyles({
   textWithIcon: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 });
 
 
-const LocationFormSave = ({ userLocation, hasChanges, setHasChanges }) => {
+const SaveButton = ({ userLocation, hasChanges, setHasChanges }) => {
   const classes = useStyles();
 
   // if we split out the form maybe the map won't flash and change center??
@@ -54,7 +54,7 @@ const LocationFormSave = ({ userLocation, hasChanges, setHasChanges }) => {
   );
 };
 
-LocationFormSave.propTypes = {
+SaveButton.propTypes = {
   userLocation: PropTypes.shape({
     googleId: PropTypes.string,
     latitude: PropTypes.number,
@@ -64,4 +64,4 @@ LocationFormSave.propTypes = {
   setHasChanges: PropTypes.func.isRequired,
 };
 
-export default LocationFormSave;
+export default SaveButton;

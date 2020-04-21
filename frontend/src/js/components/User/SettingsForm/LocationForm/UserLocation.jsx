@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { geolocated } from 'react-geolocated';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import api from './api';
+import api from '../../api';
 import LocationMap from './LocationMap';
 
 const buffaloCenterish = {

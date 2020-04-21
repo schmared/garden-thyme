@@ -7,8 +7,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 import HelpIcon from '@material-ui/icons/Help';
-import UserLocation from './UserLocation';
-import LocationFormSave from './LocationFormSave';
+import UserLocation from './LocationForm/UserLocation';
+import SaveButton from './SaveButton';
 
 const useStyles = makeStyles({
   title: {
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Settings = ({ loggedInUser }) => {
+const SettingsForm = ({ loggedInUser }) => {
   const classes = useStyles();
   const [userLocation, setUserLocation] = useState({ lat: 0, lng: 0 });
   const [hasChanges, setHasChanges] = useState(true);
@@ -55,7 +55,7 @@ const Settings = ({ loggedInUser }) => {
           }}
         />
       </CardContent>
-      <LocationFormSave
+      <SaveButton
         userLocation={userLocation}
         hasChanges={hasChanges}
         setHasChanges={() => setHasChanges(false)}
@@ -64,7 +64,7 @@ const Settings = ({ loggedInUser }) => {
   );
 };
 
-Settings.propTypes = {
+SettingsForm.propTypes = {
   loggedInUser: PropTypes.shape({
     googleId: PropTypes.string,
   }).isRequired,
@@ -74,4 +74,4 @@ const mapStateToProps = (state) => ({
   loggedInUser: state.settings.user,
 });
 
-export default connect(mapStateToProps)(Settings);
+export default connect(mapStateToProps)(SettingsForm);

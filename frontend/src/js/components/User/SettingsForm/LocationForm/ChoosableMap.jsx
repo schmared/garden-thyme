@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import LocationPicker from '../LocationPicker';
-import GoogleMapLoader from '../../loaders/google_map_loader';
+import LocationPicker from './LocationPicker';
+import GoogleMapLoader from '../../../../loaders/google_map_loader';
 
 const ChoosableMap = ({ apiKey, center, onChange }) => {
   const [isLoading, setIsLoading] = useState(true);

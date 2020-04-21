@@ -11,12 +11,8 @@ module.exports = merge(common, {
     port: 8081,
     hot: true,
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-  ],
   resolve: {
     alias: {
-      'react-dom': '@hot-loader/react-dom',
       config$: path.resolve(__dirname, 'config.dev.js'),
     },
   },

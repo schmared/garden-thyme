@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import SettingsDrawer from './SettingsDrawer';
+import UserDrawer from './UserDrawer';
 import LoginButton from './LoginButton';
 
 
@@ -18,7 +18,7 @@ const Settings = ({ isLoggedIn, user }) => {
         <IconButton alt="Edit User Settings" onClick={() => setOpen(!open)}>
           <Avatar alt={`Logged in as ${user.name}`} src={user.imageUrl} />
         </IconButton>
-        <SettingsDrawer open={open} close={() => setOpen(false)} />
+        <UserDrawer open={open} close={() => setOpen(false)} />
       </div>
     );
   }
