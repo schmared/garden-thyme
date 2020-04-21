@@ -2,21 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import GoogleLogin from 'react-google-login';
+import api from './api';
 
 
-const Settings = ({ setUserLoggedIn, isLoggedIn, children: child }) => {
+const LoginButton = ({ setUserLoggedIn, isLoggedIn, children: child }) => {
+  const { data: keys, error, isFetching } = api.useGetKeys();
+
+  if (isFetching) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    return <div>Initialization Error</div>;
+  }
+
   const googleResponse = (response) => setUserLoggedIn(response);
 
-  const googleError = (error) => console.warn(error); // eslint-disable-line no-console
+  const googleError = (e) => console.warn(e); // eslint-disable-line no-console
 
   if (isLoggedIn) {
     return null;
   }
 
-  // TODO move clientId to config somewhere
   return (
     <GoogleLogin
-      clientId="190581999051-9d8pjkd18pcgd1o56i96s15u03el7ne7.apps.googleusercontent.com"
+      clientId={keys.clientId}
       onSuccess={googleResponse}
       onFailure={googleError}
       isSignedIn
@@ -29,7 +38,7 @@ const Settings = ({ setUserLoggedIn, isLoggedIn, children: child }) => {
   );
 };
 
-Settings.propTypes = {
+LoginButton.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   setUserLoggedIn: PropTypes.func.isRequired,
   children: PropTypes.element.isRequired,
@@ -44,4 +53,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Settings);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginButton);
