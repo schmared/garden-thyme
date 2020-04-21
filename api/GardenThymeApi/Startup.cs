@@ -23,6 +23,7 @@ namespace GardenThymeApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            _ = services.AddApplicationInsightsTelemetry();
             _ = services.AddControllers();
             // _ = services.AddAuthentication(auth => { auth.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme; })
             //     .AddGoogle(options =>
