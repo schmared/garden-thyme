@@ -10,8 +10,9 @@ namespace GardenThymeApi.Controllers
     {
         private readonly IConfiguration _configuration;
 
-        public HomeController(IConfiguration configuration) {
-          _configuration = configuration;
+        public HomeController(IConfiguration configuration)
+        {
+            _configuration = configuration;
         }
 
         [HttpGet]
@@ -25,9 +26,10 @@ namespace GardenThymeApi.Controllers
         [HttpGet]
         public IActionResult GetKeys()
         {
-            return Ok(new {
-              mapsKey = _configuration.GetValue<string>("Authentication:Google:MapsKey"),
-              clientId = _configuration.GetValue<string>("Authentication:Google:ClientId")
+            return Ok(new
+            {
+                mapsKey = _configuration.GetValue<string>("Authentication:Google:MapsKey"),
+                clientId = _configuration.GetValue<string>("Authentication:Google:ClientId")
             });
         }
 

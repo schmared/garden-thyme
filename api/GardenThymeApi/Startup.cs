@@ -48,8 +48,8 @@ namespace GardenThymeApi
                 client.Timeout = TimeSpan.FromMilliseconds(50 * 1000);
             });
 
-            _ = services.AddSingleton<IDbContext, DbContext>();
             _ = services.AddSingleton<IQueryService, QueryService>();
+            _ = services.AddTransient<IDbContext, DbContext>();
             _ = services.AddTransient<IUserContext>(u => new UserSettings { UserId = "0", Longitude = 1m, Latitude = 1m });
 
             _ = services.AddCors(options => options.AddPolicy(name: _allowLocalFromLocal, builder => builder
