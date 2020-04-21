@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "start http://localhost:8081/ & webpack-dev-server --useLocalIp --host 0.0.0.0 --config webpack.dev.js",
+    "dev": "start http://localhost:8081/ & webpack-dev-server --useLocalIp --host 0.0.0.0 --hot --config webpack.dev.js",
     "build": "webpack -p",
     "test": "mocha -r @babel/register -r testSetup.js src/**/*.spec.jsx",
     "test:watch": "npm run test -- --reporter=nyan --watch --watch-files src/**/*"
@@ -37,7 +37,6 @@
     "@babel/preset-react": "^7.9.4",
     "@babel/register": "^7.9.0",
     "@babel/runtime": "^7.9.2",
-    "@hot-loader/react-dom": "^16.13.0",
     "@types/react": "^16.9.34",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
@@ -60,7 +59,6 @@
     "html-webpack-plugin": "^4.2.0",
     "jsdom": "^16.2.2",
     "mocha": "^7.1.1",
-    "react-hot-loader": "^4.12.20",
     "style-loader": "^1.1.4",
     "url-loader": "^4.1.0",
     "webpack": "^4.42.1",

@@ -2,7 +2,6 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider, makeStyles } from '@material-ui/styles';
-import { hot } from 'react-hot-loader/root';
 import theme from '../theme';
 import GlobalErrorBoundary from './GlobalErrorBoundary';
 import AppBar from './AppBar';
@@ -63,4 +62,4 @@ const App = () => {
   );
 };
 
-export default hot(App);
+export default App;
