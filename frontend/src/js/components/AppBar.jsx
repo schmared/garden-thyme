@@ -7,9 +7,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import User from './User';
 
 const useStyles = makeStyles((theme) => ({
-  appBar: {
-    zIndex: theme.zIndex.drawer + 200,
-  },
   barIcon: {
     marginRight: theme.spacing(2),
   },

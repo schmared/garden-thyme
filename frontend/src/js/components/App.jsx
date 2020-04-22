@@ -53,8 +53,8 @@ const App = () => {
               <div className={classes.footer}>
                 &copy; 2020 Team Awesome
               </div>
-              <Journal className={classes.fab} />
             </LoggedInContent>
+            <Journal className={classes.fab} />
           </Provider>
         </div>
       </GlobalErrorBoundary>

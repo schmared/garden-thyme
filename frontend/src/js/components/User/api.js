@@ -1,4 +1,4 @@
-import { useQuery, useMutation, queryCache } from 'react-query';
+import { useQuery, useMutation } from 'react-query';
 import axios from 'axios';
 import config from 'config';
 
@@ -20,23 +20,5 @@ const getKeys = async () => {
 export default {
   useGetKeys: () => useQuery('keys', getKeys),
   useGetSettings: (userGoogleId) => useQuery(['settings', userGoogleId], getSettings),
-  usePostSettings: () => useMutation(postSettings, {
-    onMutate: (user) => {
-      const previousValue = queryCache.getQueryData('settings');
-
-      queryCache.setQueryData('settings', (old) => ({
-        ...user, ...old,
-      }));
-
-      return previousValue;
-    },
-    onError: (error, _, previousValue) => {
-      console.warn(error); // eslint-disable-line no-console
-      // TODO this isn't showing the old location on the map?
-      queryCache.setQueryData('settings', previousValue);
-    },
-    onSettled: () => {
-      queryCache.refetchQueries('settings');
-    },
-  }),
+  usePostSettings: () => useMutation(postSettings),
 };
