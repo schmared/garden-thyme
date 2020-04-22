@@ -29,6 +29,7 @@ namespace GardenThymeApi.Controllers
         {
             return Ok((await _queryService.Upsert<Journal>(TableNames.Journal, new
             {
+                journal.Id,
                 journal.UserId,
                 journal.EntryDateTime,
                 journal.EntryType,
