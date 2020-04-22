@@ -31,7 +31,7 @@ const JournalDialog = ({
   loggedInUser,
 }) => {
   const classes = useStyles();
-  const today = moment().format('YYYY-MM-DD');
+  const today = moment().format('YYYY-MM-DD'); // TODO we need to be able to change date
 
   const [entries, updateEntries] = useState([]);
   const [needsSaving, setNeedsSaving] = useState(false);

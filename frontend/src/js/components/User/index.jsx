@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
@@ -9,16 +9,16 @@ import UserDrawer from './UserDrawer';
 import LoginButton from './LoginButton';
 
 
-const Settings = ({ isLoggedIn, user }) => {
-  const [open, setOpen] = useState(false);
-
+const Settings = ({
+  isLoggedIn, user, isOpen, setIsOpen,
+}) => {
   if (isLoggedIn) {
     return (
       <div id="user-settings">
-        <IconButton alt="Edit User Settings" onClick={() => setOpen(!open)}>
+        <IconButton alt="Edit User Settings" onClick={() => setIsOpen(!isOpen)}>
           <Avatar alt={`Logged in as ${user.name}`} src={user.imageUrl} />
         </IconButton>
-        <UserDrawer open={open} close={() => setOpen(false)} />
+        <UserDrawer open={isOpen} close={() => setIsOpen(false)} />
       </div>
     );
   }
@@ -40,11 +40,18 @@ Settings.propTypes = {
     name: PropTypes.string.isRequired,
     imageUrl: PropTypes.string.isRequired,
   }).isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  setIsOpen: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   user: state.settings.user,
   isLoggedIn: state.settings.isLoggedIn,
+  isOpen: state.modals.userSettingsOpen,
 });
 
-export default connect(mapStateToProps)(Settings);
+const mapDispatchToProps = (dispatch) => ({
+  setIsOpen: (value) => dispatch({ type: value ? 'OPEN_SETTINGS' : 'CLOSE_MODALS' }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Settings);
