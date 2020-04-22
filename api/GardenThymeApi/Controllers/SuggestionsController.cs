@@ -9,7 +9,7 @@ namespace GardenThymeApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            
+            return Ok();
         }
     }
 }
