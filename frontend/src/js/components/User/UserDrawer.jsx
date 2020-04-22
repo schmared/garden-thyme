@@ -8,16 +8,17 @@ import Profile from './Profile';
 import SettingsForm from './SettingsForm';
 
 
-const useStyles = makeStyles((theme) => {
+const useStyles = makeStyles(() => {
   const drawerWidth = ({ fullWidth }) => (fullWidth ? '100vw' : 450);
 
   return {
     root: {
       display: 'flex',
     },
-    appBar: {
-      zIndex: theme.zIndex.drawer + 1,
-    },
+    // appBar: {
+    // This is causing issues in the Journal modal. Leaving it behind the app bar for now.
+    //   zIndex: theme.zIndex.drawer + 1,
+    // },
     drawer: {
       width: drawerWidth,
       flexShrink: 0,
