@@ -71,7 +71,7 @@ namespace GardenThymeApi
             //_ = app.UseAuthorization();
             _ = app.UseEndpoints(endpoints =>
             {
-                _ = endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+                _ = endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/");
                 _ = endpoints.MapFallbackToController("Index", "Home");
             });
 
