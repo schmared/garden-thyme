@@ -19,7 +19,7 @@ namespace GardenThymeApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery]int id, [FromQuery]string userId, [FromQuery]DateTime date)
+        public async Task<IActionResult> Get([FromQuery]int? id, [FromQuery]string userId, [FromQuery]DateTime? date)
         {
             return Ok(await _queryService.Get<Journal>(TableNames.Journal, new { Id = id, UserId = userId, Date = date }));
         }
