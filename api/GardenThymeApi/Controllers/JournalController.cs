@@ -40,5 +40,12 @@ namespace GardenThymeApi.Controllers
                 journal.Latitude
             })).FirstOrDefault());
         }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            return Ok(await _queryService.Delete<Journal>(TableNames.Journal, new { Id = id }));
+        }
     }
 }
