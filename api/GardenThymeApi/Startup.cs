@@ -1,5 +1,7 @@
 using System;
+using System.IO;
 using System.Net.Http.Headers;
+using System.Reflection;
 using GardenThymeApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -55,7 +57,11 @@ namespace GardenThymeApi
             _ = services.AddCors(options => options.AddPolicy(name: _allowLocalFromLocal, builder => builder
                 .WithOrigins("http://localhost:8081").AllowAnyMethod().AllowAnyHeader()));
 
-            _ = services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "GardenThyme API", Version = "v1" }); });
+            _ = services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "GardenThyme API", Version = "v1" });
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

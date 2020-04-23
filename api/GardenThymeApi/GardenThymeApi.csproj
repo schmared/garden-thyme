@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <NoWarn>IDE0011,IDE0008,IDE0050,IDE1006</NoWarn>
     <UserSecretsId>47b1662b-acf0-464e-8401-75ed1ec3dd35</UserSecretsId>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.35" />

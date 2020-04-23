@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace GardenThymeApi.Services
 {
+#pragma warning disable CS1591
     public interface IDbContext
     {
         IDbConnection Connection { get; }
@@ -17,4 +18,5 @@ namespace GardenThymeApi.Services
             Connection = new SqlConnection(configuration.GetConnectionString("database"));
         }
     }
+#pragma warning restore CS1591
 }
