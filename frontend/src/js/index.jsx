@@ -7,6 +7,7 @@ import App from './components/App';
 
 const appInsights = new ApplicationInsights({
   config: {
+    // TODO config this up
     instrumentationKey: '5aad3d54-5866-4bee-8842-8a3fc242ccb0',
   },
 });
