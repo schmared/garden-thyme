@@ -15,6 +15,8 @@ namespace GardenThymeApi.Controllers
             _configuration = configuration;
         }
 
+        //TODO: API is serving up the frontend via this endpoint for development stage of the project and to
+        // minimize initial hosting costs. With an owned Custom Domain we can host the frontend app somewhere else.
         [HttpGet]
         public IActionResult Index()
         {
@@ -22,6 +24,8 @@ namespace GardenThymeApi.Controllers
             return PhysicalFile(path, "text/html");
         }
 
+        //TODO: This is keeping the secure keys for the frontend out of the repo but is still not secure.
+        // Production hosting environment needs to have a secure environment for such variables for the frontend app.
         [Route("keys")]
         [HttpGet]
         public IActionResult GetKeys()

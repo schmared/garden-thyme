@@ -33,6 +33,12 @@ We plan to add more ways to log the activities in your garden, including picture
 We also want to add reporting to encourage established farms to log their results as that data will be the most helpful!
 
 
+-- --
+Plant Apis that seem to be available have incomplete information, seem to not have active support, are subscription based, or their support links/emails aren't working.
+We would love to team up with another project and/or the USDA to help distribute this information if that is their goal. These APIs tend to not be user friendly and
+contain mostly scientific information, which is useful but needs to be coordinated and parsed for gardeners and farmers.
+--
+
 
 Things to address:
 
