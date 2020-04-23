@@ -45,7 +45,9 @@ namespace GardenThymeApi.Controllers
         [Route("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            return Ok(await _queryService.Delete<Journal>(TableNames.Journal, new { Id = id }));
+            _ = await _queryService.Delete<Journal>(TableNames.Journal, new { Id = id });
+
+            return Ok();
         }
     }
 }

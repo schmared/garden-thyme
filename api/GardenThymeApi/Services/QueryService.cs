@@ -8,7 +8,8 @@ namespace GardenThymeApi.Services
     public enum TableNames
     {
         Settings,
-        Journal
+        Journal,
+        Suggestions
     }
 
     public interface IQueryService
