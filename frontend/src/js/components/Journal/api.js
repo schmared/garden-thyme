@@ -12,6 +12,8 @@ const getActionTypes = async () => {
 
 const postEntry = (entry) => axios.post(`${config.apiBaseRoute}journal`, entry);
 
+const deleteEntry = (id) => axios.delete(`${config.apiBaseRoute}journal/${id}`);
+
 const getEntries = async (_, userId, date) => {
   const { data } = await axios.get(`${config.apiBaseRoute}journal?userId=${userId}&date=${date}`);
   return data;
@@ -21,4 +23,5 @@ export default {
   useGetActionTypes: () => useQuery('actionTypes', getActionTypes),
   useGetEntries: (userId, date) => useQuery(['journal-entry', userId, date], getEntries),
   usePostEntry: () => useMutation(postEntry),
+  useDeleteEntry: () => useMutation(deleteEntry),
 };

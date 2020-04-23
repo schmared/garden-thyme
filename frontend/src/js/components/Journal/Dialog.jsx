@@ -33,8 +33,8 @@ const JournalDialog = ({
   const classes = useStyles();
   const today = moment().format('YYYY-MM-DD'); // TODO we need to be able to change date
 
-  const [entries, updateEntries] = useState([]);
-  const [needsSaving, setNeedsSaving] = useState(false);
+  const [entries, updateEntries] = useState([]); // this doesn't need to be an array
+  const [deletedEntryIds, setDeletedEntries] = useState([]); // gross.
   const {
     data: actionTypes,
     error: errorFetchingTypes,
@@ -60,17 +60,14 @@ const JournalDialog = ({
       longitude: 1,
       latitude: 1,
     }]);
-    setNeedsSaving(true);
   };
 
   let content = <CircularProgress />;
   if (!isFetchingTypes && !isFetchingUser && !isFetchingEntries) {
-    const canEdit = !errorFetchingTypes && !needsSaving
+    const canEdit = !errorFetchingTypes
       && !errorFetchingUser && !errorFetchingEntries;
 
-    console.log(dbEntries);
-    console.log(entries);
-    const allEntries = [...dbEntries, ...entries];
+    const allEntries = [...dbEntries, ...entries].filter((e) => !deletedEntryIds.includes(e.id));
 
     content = (
       <div>
@@ -81,10 +78,11 @@ const JournalDialog = ({
             types={actionTypes}
             userSettings={userSettings}
             entryDateTime={today}
+            onDelete={() => setDeletedEntries((ids) => [...ids, entry.id])}
           />
         ))}
         {canEdit && (
-          <Button variant="contained" color="primary" startIcon={<AddIcon />} onClick={addEntry}>
+          <Button variant="contained" color="primary" startIcon={<AddIcon />} onClick={addEntry} style={{ marginTop: 10 }}>
             Add New Entry
           </Button>
         )}
