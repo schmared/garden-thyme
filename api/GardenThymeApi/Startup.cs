@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using GardenThymeApi.Models;
 
 namespace GardenThymeApi
 {
@@ -25,6 +24,7 @@ namespace GardenThymeApi
         {
             _ = services.AddApplicationInsightsTelemetry();
             _ = services.AddControllers();
+            //TODO: Add and Test Google Authentication once Authorization Header is coming from the frontend app api calls.
             // _ = services.AddAuthentication(auth => { auth.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme; })
             //     .AddGoogle(options =>
             //     {
@@ -50,7 +50,6 @@ namespace GardenThymeApi
 
             _ = services.AddTransient<IQueryService, QueryService>();
             _ = services.AddTransient<IDbContext, DbContext>();
-            _ = services.AddTransient<IUserContext>(u => new UserSettings { UserId = "0", Longitude = 1m, Latitude = 1m });
 
             _ = services.AddCors(options => options.AddPolicy(name: _allowLocalFromLocal, builder => builder
                 .WithOrigins("http://localhost:8081").AllowAnyMethod().AllowAnyHeader()));
@@ -66,9 +65,10 @@ namespace GardenThymeApi
 
             _ = app.UseHttpsRedirection();
             _ = app.UseRouting();
+            //TODO: Add these back when enabling authentication.
             //_ = app.UseAuthentication();
-            _ = app.UseStaticFiles();
             //_ = app.UseAuthorization();
+            _ = app.UseStaticFiles();
             _ = app.UseEndpoints(endpoints =>
             {
                 _ = endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/");

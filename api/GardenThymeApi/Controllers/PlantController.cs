@@ -4,10 +4,20 @@ using System.Threading.Tasks;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
-using GardenThymeApi.Models;
 
 namespace GardenThymeApi.Controllers
 {
+    internal static class GardenOptions
+    {
+        public static string TrefleAuth { get; set; }
+    }
+
+    internal class TrefleResponse
+    {
+        public long Expiration { get; set; }
+        public string Token { get; set; }
+    }
+
     [ApiController]
     [Route("plant")]
     public class PlantController : Controller
