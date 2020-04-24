@@ -7,7 +7,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Profile from './Profile';
 import SettingsForm from './SettingsForm';
 
-
+// TODO this is weirdly showing the logged-out background on transition
 const useStyles = makeStyles(() => {
   const drawerWidth = ({ fullWidth }) => (fullWidth ? '100vw' : 450);
 
