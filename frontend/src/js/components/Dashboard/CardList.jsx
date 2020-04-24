@@ -1,60 +1,99 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import IconButton from '@material-ui/core/IconButton';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
-import tileData from './tileData';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+import ChevronLeft from '@material-ui/icons/ChevronLeft';
+import ChevronRight from '@material-ui/icons/ChevronRight';
+import Carousel from '@brainhubeu/react-carousel';
+import config from 'config';
+import CarouselItem from './CarouselItem';
+import api from './api';
+import '@brainhubeu/react-carousel/lib/style.css';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
-  },
-  gridList: {
-    flexWrap: 'nowrap',
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-    transform: 'translateZ(0)',
-  },
-  title: {
-    color: theme.palette.primary.light,
-  },
-  titleBar: {
-    background:
-      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(4),
   },
 }));
 
-const CardList = () => {
+const CardList = ({ typeName, loggedInUser }) => {
   const classes = useStyles();
+  const { data, error, isFetching } = api.useGetSuggestions(loggedInUser.googleId, typeName);
+
+  let content = '';
+
+  if (isFetching) {
+    content = <CircularProgress />;
+  } else if (error) {
+    content = (
+      <div className={classes.root}>
+        There was an error loading suggestions for things to
+        {' '}
+        {typeName}
+        {' '}
+        this week.
+      </div>
+    );
+  } else {
+    content = (
+      <Carousel
+        arrows
+        slidesPerPage={3}
+        arrowLeft={<ChevronLeft />}
+        arrowLeftDisabled={<ChevronLeft color="disabled" />}
+        arrowRight={<ChevronRight />}
+        arrowRightDisabled={<ChevronRight color="disabled" />}
+        addArrowClickHandler
+        breakpoints={{
+          640: {
+            slidesPerPage: 1,
+            arrows: false,
+          },
+          900: {
+            slidesPerPage: 2,
+            arrows: false,
+          },
+        }}
+      >
+        {data.map(({ plantId, growZone, uri }) => (
+          <CarouselItem
+            key={plantId}
+            name={plantId}
+            growZone={growZone}
+            imageUrl={`${config.apiBaseRoute}${uri}`}
+          />
+        ))}
+      </Carousel>
+    );
+  }
 
   return (
-    <div className={classes.root}>
-      <GridList className={classes.gridList} cols={2.5}>
-        {tileData.map((tile) => (
-          <GridListTile key={tile.id}>
-            <img src={tile.img} alt={tile.title} />
-            <GridListTileBar
-              title={tile.title}
-              classes={{
-                root: classes.titleBar,
-                title: classes.title,
-              }}
-              actionIcon={(
-                <IconButton aria-label={`star ${tile.title}`}>
-                  <StarBorderIcon className={classes.title} />
-                </IconButton>
-              )}
-            />
-          </GridListTile>
-        ))}
-      </GridList>
-    </div>
+    <Container className={classes.root}>
+      <Typography variant="h4" component="h3">
+        Things you should
+        {' '}
+        <b>{typeName}</b>
+        {' '}
+        this week:
+      </Typography>
+      {content}
+    </Container>
   );
 };
 
-export default CardList;
+CardList.propTypes = {
+  typeName: PropTypes.string.isRequired,
+  loggedInUser: PropTypes.shape({ googleId: PropTypes.string }).isRequired,
+};
+
+
+const mapStateToProps = (state) => ({
+  loggedInUser: state.settings.user,
+});
+
+export default connect(mapStateToProps)(CardList);

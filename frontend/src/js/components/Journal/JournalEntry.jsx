@@ -14,7 +14,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import IconButton from '@material-ui/core/IconButton';
-import Alert from '@material-ui/lab';
+import Alert from '@material-ui/lab/Alert';
 import api from './api';
 
 const useStyles = makeStyles((theme) => ({

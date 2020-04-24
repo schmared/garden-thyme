@@ -14,7 +14,7 @@ const LoggedInContent = ({
 }) => {
   const { data: settings, error, isFetching } = api.useGetSettings(loggedInUser.googleId);
 
-  const userIsInitialized = settings !== undefined && settings.userId !== '0';
+  const userIsInitialized = !!settings && settings.userId !== '0';
 
   return (
     <DisplayContent
@@ -31,7 +31,7 @@ const LoggedInContent = ({
 
 
 LoggedInContent.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element),
@@ -46,6 +46,7 @@ LoggedInContent.propTypes = {
 };
 
 LoggedInContent.defaultProps = {
+  className: '',
   requiresUserInitialization: false,
   loggedOutChildren: null,
 };
