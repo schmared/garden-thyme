@@ -9,27 +9,33 @@ import Cloud from '@material-ui/icons/Cloud';
 import Looks from '@material-ui/icons/Looks';
 
 
-const Icon = ({ weatherString }) => {
+const Icon = ({ weatherString, small }) => {
   const lowerWeatherString = weatherString.toLowerCase();
+  const fontSize = small ? 60 : 80;
 
   if (lowerWeatherString === 'thunderstorm') {
-    return <FlashOn style={{ fontSize: 80 }} color="primary" />;
+    return <FlashOn style={{ fontSize }} color="primary" />;
   } if (lowerWeatherString === 'drizzle') {
-    return <Grain style={{ fontSize: 80 }} color="primary" />;
+    return <Grain style={{ fontSize }} color="primary" />;
   } if (lowerWeatherString === 'rain') {
-    return <BeachAccess style={{ fontSize: 80 }} color="primary" />;
+    return <BeachAccess style={{ fontSize }} color="primary" />;
   } if (lowerWeatherString === 'snow') {
-    return <AcUnit style={{ fontSize: 80 }} color="primary" />;
+    return <AcUnit style={{ fontSize }} color="primary" />;
   } if (lowerWeatherString === 'clear') {
-    return <WbSunny style={{ fontSize: 80 }} color="primary" />;
+    return <WbSunny style={{ fontSize }} color="primary" />;
   } if (lowerWeatherString.includes('clouds')) {
-    return <Cloud style={{ fontSize: 80 }} color="primary" />;
+    return <Cloud style={{ fontSize }} color="primary" />;
   }
-  return <Looks style={{ fontSize: 80 }} color="primary" />;
+  return <Looks style={{ fontSize }} color="primary" />;
 };
 
 Icon.propTypes = {
   weatherString: PropTypes.string.isRequired,
+  small: PropTypes.bool,
+};
+
+Icon.defaultProps = {
+  small: false,
 };
 
 export default Icon;

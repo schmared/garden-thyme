@@ -1,34 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Icon from './Icon';
-
-// import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
-// import moment from 'moment';
+import Icon from './Icon';
 
-const Forecast = ({ day }) => {
-  console.log(day); // eslint-disable-line
-
-  const date = moment(day.sunrise);
-  console.log(date.format('MMMM Do YYYY h:mm'));
+const Forecast = ({ day, index }) => {
+  const today = moment();
+  const dayOfForecast = today.add(index + 1, 'days');
+  const weekday = dayOfForecast.format('dddd');
 
   return (
     <Grid item xs={1}>
       <Card>
         <CardContent>
-          <Typography gutterBottom variant="h6">
-            Buffalo, NY
+          <Typography variant="body2">
+            {weekday}
           </Typography>
-          <Typography variant="h4">
-            99
-            &deg;F
+          <Typography variant="h5">
+            <Icon weatherString={day.weather[0].main} small />
           </Typography>
           <Typography variant="body2" color="textSecondary">
-            words
+            {day.weather[0].main}
+            <br />
+            <br />
+            <b>High:</b>
+            <br />
+            {day.temp.max}
+            <br />
+            <b>Low:</b>
+            <br />
+            {day.temp.min}
           </Typography>
         </CardContent>
       </Card>
@@ -37,7 +41,12 @@ const Forecast = ({ day }) => {
 };
 
 Forecast.propTypes = {
-  day: PropTypes.shape({ sunrise: PropTypes.number }).isRequired,
+  index: PropTypes.number.isRequired,
+  day: PropTypes.shape({
+    sunrise: PropTypes.number,
+    weather: PropTypes.array, // eslint-disable-line
+    temp: PropTypes.shape({ max: PropTypes.number, min: PropTypes.number }),
+  }).isRequired,
 };
 
 export default Forecast;

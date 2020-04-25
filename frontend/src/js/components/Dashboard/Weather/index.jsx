@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
 import api from './api';
 import Icon from './Icon';
-// import Forecast from './Forecast';
+import Forecast from './Forecast';
 
 const useStyles = makeStyles(() => ({
   left: {
@@ -28,8 +28,9 @@ const Weather = () => {
 
   // TODO use user's location
   const { data: now, error, isFetching } = api.useGetWeather('Buffalo');
+  const { data: forecast, error: forecastError, isFetching: isFetchingForecast } = api.useGetForecast('Buffalo');
 
-  if (error || isFetching) {
+  if (error || isFetching || forecastError || isFetchingForecast) {
     return null;
   }
 
@@ -99,6 +100,7 @@ const Weather = () => {
             </CardContent>
           </Card>
         </Grid>
+        {forecast.list.map((day, idx) => (<Forecast key={day.dt} index={idx} day={day} />))}
       </Grid>
     </Container>
   );
