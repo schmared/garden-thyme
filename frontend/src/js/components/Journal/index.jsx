@@ -21,7 +21,7 @@ const Journal = ({
   }
 
   return (
-    <div className={className} requiresUserInitialization>
+    <div className={className}>
       <AddButton onClick={() => setIsOpen(true)} />
       <Dialog
         open={isOpen}

@@ -20,8 +20,14 @@ const getKeys = async () => {
   return data;
 };
 
+const queryOptions = {
+  staleTime: 5000,
+  refetchOnWindowFocus: false,
+  retry: 0,
+};
+
 export default {
-  useGetKeys: () => useQuery('keys', getKeys),
-  useGetSettings: (userGoogleId) => useQuery(['settings', userGoogleId], getSettings),
-  usePostSettings: () => useMutation(postSettings),
+  useGetKeys: () => useQuery('keys', getKeys, queryOptions),
+  useGetSettings: (userGoogleId) => useQuery(['settings', userGoogleId], getSettings, queryOptions),
+  usePostSettings: () => useMutation(postSettings, queryOptions),
 };

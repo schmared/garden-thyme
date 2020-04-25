@@ -19,9 +19,15 @@ const getEntries = async (_, userId, date) => {
   return data;
 };
 
+const queryOptions = {
+  staleTime: 5000,
+  refetchOnWindowFocus: false,
+  retry: 0,
+};
+
 export default {
-  useGetActionTypes: () => useQuery('actionTypes', getActionTypes),
-  useGetEntries: (userId, date) => useQuery(['journal-entry', userId, date], getEntries),
-  usePostEntry: () => useMutation(postEntry),
-  useDeleteEntry: () => useMutation(deleteEntry),
+  useGetActionTypes: () => useQuery('actionTypes', getActionTypes, queryOptions),
+  useGetEntries: (userId, date) => useQuery(['journal-entry', userId, date], getEntries, queryOptions),
+  usePostEntry: () => useMutation(postEntry, queryOptions),
+  useDeleteEntry: () => useMutation(deleteEntry, queryOptions),
 };
