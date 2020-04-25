@@ -41,7 +41,7 @@ const Weather = () => {
   return (
     <Container>
       <Grid container spacing={1}>
-        <Grid item xs={4}>
+        <Grid item sm={4}>
           <Card>
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">

@@ -13,7 +13,7 @@ const Forecast = ({ day, index }) => {
   const weekday = dayOfForecast.format('dddd');
 
   return (
-    <Grid item xs={1}>
+    <Grid item sm={1}>
       <Card>
         <CardContent>
           <Typography variant="body2">
