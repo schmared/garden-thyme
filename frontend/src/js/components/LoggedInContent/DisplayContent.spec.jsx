@@ -20,7 +20,7 @@ describe('Logged In Content', () => {
     });
 
     it('will be empty for logged-out users', () => {
-      const component = comp({ isLoggedIn: false });
+      const component = comp({ isLoggedIn: false, userIsInitialized: false });
       expect(component.html()).to.be.null;
     });
     it('will be empty for logged-out but initialized users', () => {
@@ -45,7 +45,7 @@ describe('Logged In Content', () => {
     });
 
     it('will be empty for logged-out users', () => {
-      const component = comp({ isLoggedIn: false });
+      const component = comp({ isLoggedIn: false, userIsInitialized: false });
       expect(component.html()).to.be.null;
     });
     it('will be empty for logged-out but initialized users', () => {
@@ -65,13 +65,13 @@ describe('Logged In Content', () => {
   describe('if the component does not need initialization and has logged-out content', () => {
     const comp = (props) => makeComponent({
       requiresUserInitialization: false,
-      loggedOutChildren: (<div class="child">Childrens</div>),
+      loggedOutChildren: (<div className="child">Childrens</div>),
       ...props
     });
     const loggedOutHtml = '<div class="clz"><div class="child">Childrens</div></div>';
 
     it('will be empty for logged-out users', () => {
-      const component = comp({ isLoggedIn: false });
+      const component = comp({ isLoggedIn: false, userIsInitialized: false });
       expect(component.html()).to.equal(loggedOutHtml);
     });
     it('will be empty for logged-out but initialized users', () => {
@@ -92,14 +92,14 @@ describe('Logged In Content', () => {
   describe('if the component does need initialization and has logged-out content', () => {
     const comp = (props) => makeComponent({
       requiresUserInitialization: true,
-      loggedOutChildren: (<div class="child">Childrens</div>),
+      loggedOutChildren: (<div className="child">Childrens</div>),
       userSettings: { thing: 'stuff' },
       ...props
     });
     const loggedOutHtml = '<div class="clz"><div class="child">Childrens</div></div>';
 
     it('will be empty for logged-out users', () => {
-      const component = comp({ isLoggedIn: false });
+      const component = comp({ isLoggedIn: false, userIsInitialized: false });
       expect(component.html()).to.equal(loggedOutHtml);
     });
     it('will be empty for logged-out but initialized users', () => {
