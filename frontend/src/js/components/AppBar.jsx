@@ -19,7 +19,7 @@ export default () => {
   const classes = useStyles();
 
   return (
-    <AppBar position="static" className={classes.appBar}>
+    <AppBar position="sticky" className={classes.appBar}>
       <Toolbar>
         <EmojiNature className={classes.barIcon} />
         <Typography variant="h5" className={classes.title}>

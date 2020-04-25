@@ -59,7 +59,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  logOut: (value) => dispatch({ type: 'LOG_OUT', value }),
+  logOut: (value) => {
+    dispatch({ type: 'LOG_OUT', value });
+    dispatch({ type: 'CLOSE_MODALS' });
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

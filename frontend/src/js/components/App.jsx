@@ -7,14 +7,11 @@ import GlobalErrorBoundary from './GlobalErrorBoundary';
 import AppBar from './AppBar';
 import Journal from './Journal';
 import Dashboard from './Dashboard';
-import LoggedInContent from './LoggedInContent';
-import Info from './Info';
 import configureStore from '../configure-store';
 import '../../css/App.css';
 
 const useStyles = makeStyles(() => ({
   root: {
-    height: '100vh',
     display: 'flex',
     flexDirection: 'column',
     flexWrap: 'nowrap',
@@ -29,7 +26,7 @@ const useStyles = makeStyles(() => ({
     padding: theme.spacing(1),
   },
   fab: {
-    position: 'absolute',
+    position: 'fixed',
     bottom: theme.spacing(2),
     right: theme.spacing(2),
   },
@@ -45,15 +42,10 @@ const App = () => {
         <div className={classes.root}>
           <Provider store={configureStore()}>
             <AppBar />
-            <LoggedInContent
-              className={classes.mainContent}
-              loggedOutChildren={<Info />}
-            >
-              <Dashboard />
-              <div className={classes.footer}>
-                &copy; 2020 Team Awesome
-              </div>
-            </LoggedInContent>
+            <Dashboard className={classes.mainContent} />
+            <div className={classes.footer}>
+              &copy; 2020 Team Awesome
+            </div>
             <Journal className={classes.fab} />
           </Provider>
         </div>
