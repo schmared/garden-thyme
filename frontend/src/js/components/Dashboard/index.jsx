@@ -5,6 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import CardList from './CardList';
 import StartingOutInfo from './StartingOutInfo';
 import Info from '../Info';
+import Weather from './Weather';
 import api from '../User/api';
 
 
@@ -35,6 +36,7 @@ const Dashboard = ({
     <div className={className}>
       <CardList typeName="Plant" />
       <CardList typeName="Harvest" />
+      <Weather />
     </div>
   );
 };
