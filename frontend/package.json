@@ -19,7 +19,7 @@
     "@material-ui/styles": "^4.9.10",
     "@microsoft/applicationinsights-web": "^2.5.4",
     "acorn": "^7.1.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "clean-webpack-plugin": "^3.0.0",
     "eslint-import-resolver-webpack": "^0.12.1",
     "express": "^4.17.1",
